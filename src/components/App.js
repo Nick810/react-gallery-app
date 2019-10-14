@@ -131,8 +131,8 @@ class App extends Component {
             <Route path="/Cats" render={ () => <PhotoContainer data={this.state.cats} heading={this.state.query} loading={this.state.loading} /> } />
             <Route path="/Dogs" render={ () => <PhotoContainer data={this.state.dogs} heading={this.state.query} loading={this.state.loading} /> } />
             <Route path="/Computers" render={ () => <PhotoContainer data={this.state.computers} heading={this.state.query} loading={this.state.loading} /> } />
-            <Route path="/:name" render={ () => <PhotoContainer data={this.state.search} heading={this.state.query} loading={this.state.loading} /> } />
-            <Route component={NotFound404}/>
+            <Route path="/Search/:searchQuery" render={ () => <PhotoContainer data={this.state.search} heading={this.state.query} loading={this.state.loading} /> } />
+            <Route component={ NotFound404 }/>
           </Switch>
         </div>
       </BrowserRouter>
@@ -141,6 +141,4 @@ class App extends Component {
 
 }
 
-export default App;
-
-// <Route path ='/' render={ () => <SearchForm onSearch={this.performSearch} resetLoading={this.resetLoading} /> } />
+export default App
