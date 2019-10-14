@@ -3,6 +3,11 @@ import Photo from './Photo';
 import NotFound from './NotFound';
 
 const PhotoContainer = props => {
+  // console.log(props.data.data)
+  // console.log(props.data.query)
+  // console.log(props.data.loading)
+
+  console.log(props.data.length)
   const results = props.data;
   let photos;
   let heading = '';
