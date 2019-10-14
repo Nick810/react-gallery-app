@@ -102,12 +102,9 @@ class App extends Component {
       .then(response => response.json())
       .then(responseData => {
         this.setState({
-            search: responseData.photos.photo,
-            query: query,
-            loading: false
-          // cats: responseData.photos.photo,
-          // query: query,
-          // loading: false
+          search: responseData.photos.photo,
+          query: query,
+          loading: false
         });
       })
       .catch(error => console.log('Error fetching and parsing data,', error));
