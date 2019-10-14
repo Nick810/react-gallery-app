@@ -14,6 +14,7 @@ import SearchForm from './SearchForm';
 import PhotoContainer from './PhotoContainer';
 import NotFound404 from './404'
 
+
 class App extends Component {
 
   state = {
@@ -26,7 +27,8 @@ class App extends Component {
     dogs: [],
     computers: [],
     query: '',
-    loading: true
+    loading: true,
+    search: [],
   };
 
   componentDidMount() {
@@ -34,9 +36,9 @@ class App extends Component {
       .then(response => response.json())
       .then(responseData => {
         this.setState({
-            cats: responseData.photos.photo,
-            query: 'cats',
-            loading: false
+          cats: responseData.photos.photo,
+          query: 'cats',
+          loading: false
         });
       })
     // fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=cats&per_page=24&format=json&nojsoncallback=1`)
@@ -100,9 +102,12 @@ class App extends Component {
       .then(response => response.json())
       .then(responseData => {
         this.setState({
-          cats: responseData.photos.photo,
-          query: query,
-          loading: false
+            search: responseData.photos.photo,
+            query: query,
+            loading: false
+          // cats: responseData.photos.photo,
+          // query: query,
+          // loading: false
         });
       })
       .catch(error => console.log('Error fetching and parsing data,', error));
@@ -119,13 +124,14 @@ class App extends Component {
       <BrowserRouter>
         <div className="container">
           <SearchForm onSearch={this.performSearch} resetLoading={this.resetLoading} />
-          <Navigation/>
+          <Navigation />
 
           <Switch>
             <Route exact path='/' component={ Home } />
             <Route path="/Cats" render={ () => <PhotoContainer data={this.state.cats} heading={this.state.query} loading={this.state.loading} /> } />
             <Route path="/Dogs" render={ () => <PhotoContainer data={this.state.dogs} heading={this.state.query} loading={this.state.loading} /> } />
             <Route path="/Computers" render={ () => <PhotoContainer data={this.state.computers} heading={this.state.query} loading={this.state.loading} /> } />
+            <Route path="/:name" render={ () => <PhotoContainer data={this.state.search} heading={this.state.query} loading={this.state.loading} /> } />
             <Route component={NotFound404}/>
           </Switch>
         </div>
@@ -136,3 +142,5 @@ class App extends Component {
 }
 
 export default App;
+
+// <Route path ='/' render={ () => <SearchForm onSearch={this.performSearch} resetLoading={this.resetLoading} /> } />
