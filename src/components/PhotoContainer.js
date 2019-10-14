@@ -6,6 +6,7 @@ const PhotoContainer = props => {
   const results = props.data;
   let photos;
   let heading = '';
+  let name = props.data.title;
 
   if (props.loading) {
     return (
