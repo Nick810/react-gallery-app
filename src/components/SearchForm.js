@@ -10,9 +10,10 @@ class SearchForm extends Component {
     this.setState({ searchValue: e.target.value });
   }
 
-  onSubmit = e =>{
+  onSubmit = e => {
     e.preventDefault();
     this.props.onSearch(this.state.searchValue);
+    this.props.resetLoading();
     e.currentTarget.reset();
   }
 

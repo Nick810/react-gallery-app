@@ -3,7 +3,6 @@ import Photo from './Photo';
 import NotFound from './NotFound';
 
 const PhotoContainer = props => {
-
   const results = props.data;
   let photos;
   let heading = '';
@@ -13,7 +12,7 @@ const PhotoContainer = props => {
       <h2>Loading...</h2>
     );
   } else if (results.length > 0) {
-    heading = props.query.toUpperCase();
+    heading = props.heading.toUpperCase();
     photos = results.map(photo =>
       <Photo
         farm={photo.farm}
