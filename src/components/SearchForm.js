@@ -10,7 +10,7 @@ class SearchForm extends Component {
   componentDidMount() {
     window.addEventListener("beforeunload", (e) => {
       if (window.location.pathname.includes('/Search/')) {
-        const currentSearchQuery = window.location.pathname.slice(8, window.location.pathname.length);
+        const currentSearchQuery = window.location.pathname.slice((window.location.pathname.indexOf('/Search/') + 8), window.location.pathname.length);
         localStorage.setItem('currentSearch', currentSearchQuery);
       }
     });
@@ -23,11 +23,10 @@ class SearchForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     const searchQuery = this.name.value;
-    const path = `/search/${searchQuery}`;
+    const path = `/Search/${searchQuery}`;
     this.props.history.push(path);
     this.props.onSearch(this.state.searchValue);
     this.props.resetLoading();
-    // e.currentTarget.reset();
   }
 
   render() {
