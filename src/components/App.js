@@ -56,12 +56,6 @@ class App extends Component {
       this.performSearch(query)
     }
 
-    window.addEventListener("beforeunload", (e) => {
-      const currentSearchQuery = window.location.pathname.slice(8, window.location.pathname.length);
-      return false;
-      this.props.onSearch('cats');
-    });
-
      this.setState({ isVisible: !this.state.isVisible });
 
     try {
