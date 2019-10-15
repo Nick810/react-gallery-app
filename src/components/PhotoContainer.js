@@ -4,7 +4,6 @@ import NotFound from './NotFound';
 
 const PhotoContainer = props => {
 
-  console.log(props.data.length)
   const results = props.data;
   let photos;
   let heading = '';

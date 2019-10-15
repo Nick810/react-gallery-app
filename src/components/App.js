@@ -7,6 +7,7 @@ import apiKey from './key/config.js';
 import Home from './Home';
 import Navigation from './Nav';
 import SearchForm from './SearchForm';
+import SearchMessage from './Search';
 import PhotoContainer from './PhotoContainer';
 import NotFound404 from './404'
 
@@ -52,18 +53,23 @@ class App extends Component {
   async componentDidMount() {
      this.setState({ isVisible: !this.state.isVisible });
 
-    await fetch(this.state.urls[0])
-      .then(response => response.json())
-      .then(responseData => {
-        this.setState({
-          cats: {
-            data: responseData.photos.photo,
-            query: 'cats',
-            loading: false
-          }
-        });
-      })
+    try {
+      await fetch(this.state.urls[0])
+        .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            cats: {
+              data: responseData.photos.photo,
+              query: 'cats',
+              loading: false
+            }
+          });
+        })
+    } catch(error) {
+      return console.log('Unexpected error occurred')
+    }
 
+    try {
       await fetch(this.state.urls[1])
         .then(response => response.json())
         .then(responseData => {
@@ -75,18 +81,25 @@ class App extends Component {
             }
           });
         })
+    } catch(error) {
+      return console.log('Unexpected error occurred')
+    }
 
-        await fetch(this.state.urls[2])
-          .then(response => response.json())
-          .then(responseData => {
-            this.setState({
-              computers: {
-                data: responseData.photos.photo,
-                query: 'computers',
-                loading: false
-              }
-            });
-          })
+    try {
+      await fetch(this.state.urls[2])
+        .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            computers: {
+              data: responseData.photos.photo,
+              query: 'computers',
+              loading: false
+            }
+          });
+        })
+    } catch(error) {
+      return console.log('Unexpected error occurred')
+    }
 
     return this.checkLoading();
   }
@@ -112,6 +125,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path='/' component={ Home } />
+        <Route exact path='/search' component={ SearchMessage } />
         <Route path="/Cats" render={ () => <PhotoContainer data={this.state.cats.data} heading={this.state.cats.query} loading={this.state.cats.loading} /> } />
         <Route path="/Dogs" render={ () => <PhotoContainer data={this.state.dogs.data} heading={this.state.dogs.query} loading={this.state.dogs.loading} /> } />
         <Route path="/Computers" render={ () => <PhotoContainer data={this.state.computers.data} heading={this.state.computers.query} loading={this.state.computers.loading} /> } />
@@ -123,6 +137,7 @@ class App extends Component {
 
   render() {
     const { isVisible } = this.state;
+
     return (
       <BrowserRouter>
         <div className="container">
@@ -130,7 +145,7 @@ class App extends Component {
           <Navigation />
 
           <HomeContent pose={isVisible ? 'isVisible' : 'hidden'}>
-            { this.state.loaded ? this.mainContent() : <h2>Loading...</h2> }
+            { this.state.loaded ? this.mainContent() : <h2 onClick={this.refreshPage}>Loading...</h2> }
           </HomeContent>
 
         </div>

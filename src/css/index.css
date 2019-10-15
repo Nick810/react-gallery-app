@@ -10,6 +10,10 @@ h2 {
   text-transform: capitalize;
 }
 
+h3 {
+  line-height: 1.4;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -64,6 +68,10 @@ input {
   background-color: #275270;
 }
 
+.container {
+  padding: 0 2em;
+}
+
 .photo-container ul {
   display: flex;
   flex-flow: row wrap;
@@ -91,6 +99,11 @@ input {
 
 .photo-container .not-found {
   width: 100%;
+}
+
+#not-found-logo {
+  width: 40px;
+  transform: scale(1);
 }
 
 @media only screen and (max-width: 767px)  {
@@ -122,11 +135,4 @@ input {
     margin: 10px;
     width: 100px;
   }
-}
-
-.box {
-  width: 100px;
-  height: 100px;
-  background: #ff1c68;
-  transform-origin: 50% 50%;
 }
