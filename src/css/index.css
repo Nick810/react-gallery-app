@@ -103,6 +103,7 @@ input {
 
 #not-found-logo {
   width: 40px;
+  margin-top: 2em;
   transform: scale(1);
 }
 

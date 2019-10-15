@@ -51,6 +51,17 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    if (localStorage.getItem('currentSearch') !== null) {
+      const query = localStorage.getItem('currentSearch');
+      this.performSearch(query)
+    }
+
+    window.addEventListener("beforeunload", (e) => {
+      const currentSearchQuery = window.location.pathname.slice(8, window.location.pathname.length);
+      return false;
+      this.props.onSearch('cats');
+    });
+
      this.setState({ isVisible: !this.state.isVisible });
 
     try {
@@ -66,7 +77,7 @@ class App extends Component {
           });
         })
     } catch(error) {
-      return console.log('Unexpected error occurred')
+      return console.log('Unexpected error occurred. Can\'t fetch cats data')
     }
 
     try {
@@ -82,7 +93,7 @@ class App extends Component {
           });
         })
     } catch(error) {
-      return console.log('Unexpected error occurred')
+      return console.log('Unexpected error occurred. Can\'t fetch dogs data')
     }
 
     try {
@@ -98,7 +109,7 @@ class App extends Component {
           });
         })
     } catch(error) {
-      return console.log('Unexpected error occurred')
+      return console.log('Unexpected error occurred. Can\'t fetch computers data')
     }
 
     return this.checkLoading();
@@ -129,7 +140,7 @@ class App extends Component {
         <Route path="/Cats" render={ () => <PhotoContainer data={this.state.cats.data} heading={this.state.cats.query} loading={this.state.cats.loading} /> } />
         <Route path="/Dogs" render={ () => <PhotoContainer data={this.state.dogs.data} heading={this.state.dogs.query} loading={this.state.dogs.loading} /> } />
         <Route path="/Computers" render={ () => <PhotoContainer data={this.state.computers.data} heading={this.state.computers.query} loading={this.state.computers.loading} /> } />
-        <Route path="/:searchQuery" render={ () => <PhotoContainer data={this.state.search} heading={this.state.query} loading={this.state.loading} /> } />
+        <Route path="/search/:searchQuery" render={ () => <PhotoContainer data={this.state.search} heading={this.state.query} loading={this.state.loading} /> } />
         <Route component={ NotFound404 }/>
       </Switch>
     );
