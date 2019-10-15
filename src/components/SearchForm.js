@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 class SearchForm extends Component {
 
@@ -14,7 +14,7 @@ class SearchForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     const searchQuery = this.name.value;
-    const path = `Search/${searchQuery}`;
+    const path = `/Search/${searchQuery}`;
     this.props.history.push(path);
     this.props.onSearch(this.state.searchValue);
     this.props.resetLoading();
@@ -23,7 +23,7 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <form className="search-form" onSubmit={this.onSubmit}>
+      <form className="search-form" method="GET" onSubmit={this.onSubmit}>
         <input type="search" name="search" placeholder="Search" onChange={this.onValueChange} ref={ (input) => this.name = input } required/>
         <button type="submit" className="search-button">
           <svg fill="#fff" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">

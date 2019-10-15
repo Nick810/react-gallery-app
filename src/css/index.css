@@ -117,9 +117,16 @@ input {
     display: flex;
     justify-content: center;
   }
-  
+
   .main-nav li {
     margin: 10px;
     width: 100px;
   }
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: #ff1c68;
+  transform-origin: 50% 50%;
 }
