@@ -130,11 +130,11 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path='/' component={ Home } />
-        <Route exact path='/search' component={ SearchMessage } />
+        <Route exact path='/Search' component={ SearchMessage } />
         <Route path="/Cats" render={ () => <PhotoContainer data={this.state.cats.data} heading={this.state.cats.query} loading={this.state.cats.loading} /> } />
         <Route path="/Dogs" render={ () => <PhotoContainer data={this.state.dogs.data} heading={this.state.dogs.query} loading={this.state.dogs.loading} /> } />
         <Route path="/Computers" render={ () => <PhotoContainer data={this.state.computers.data} heading={this.state.computers.query} loading={this.state.computers.loading} /> } />
-        <Route path="/:searchQuery" render={ () => <PhotoContainer data={this.state.search} heading={this.state.query} loading={this.state.loading} /> } />
+        <Route path="/Search/:searchQuery" render={ () => <PhotoContainer data={this.state.search} heading={this.state.query} loading={this.state.loading} /> } />
         <Route component={ NotFound404 }/>
       </Switch>
     );
