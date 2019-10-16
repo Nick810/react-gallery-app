@@ -1,6 +1,7 @@
 import React from 'react';
 import Photo from './Photo';
 import NotFound from './NotFound';
+import Loading from './Loading';
 
 const PhotoContainer = props => {
 
@@ -10,7 +11,7 @@ const PhotoContainer = props => {
 
   if (props.loading) {
     return (
-      <h2>Loading...</h2>
+      <Loading />
     );
   } else if (results.length > 0) {
     heading = props.heading.toUpperCase();

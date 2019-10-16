@@ -6,6 +6,7 @@ import apiKey from './key/config.js';
 
 import Home from './Home';
 import Navigation from './Nav';
+import Loading from './Loading';
 import SearchForm from './SearchForm';
 import SearchMessage from './Search';
 import PhotoContainer from './PhotoContainer';
@@ -150,7 +151,7 @@ class App extends Component {
           <Navigation />
 
           <HomeContent pose={isVisible ? 'isVisible' : 'hidden'}>
-            { this.state.loaded ? this.mainContent() : <h2 onClick={this.refreshPage}>Loading...</h2> }
+            { this.state.loaded ? this.mainContent() : <Loading /> }
           </HomeContent>
 
         </div>

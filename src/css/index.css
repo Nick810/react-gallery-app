@@ -101,10 +101,27 @@ input {
   width: 100%;
 }
 
+.loading-spinner {
+  margin-top: 2em;
+  width: 3em;
+  transform-origin: 50% 50%;
+  animation: spinner 10s infinite;
+}
+
 #not-found-logo {
   width: 40px;
   margin-top: 2em;
   transform: scale(1);
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media only screen and (max-width: 767px)  {
