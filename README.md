@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ***** BEFORE USE ******
 
-This application requires that you use your own API key to make it work. I've provided the config.js file in the project already. All you need to do is copy/paste your API key in there. 
+This application requires that you use your own API key to make it work. I've provided the config.js file in the project already. Navigate to path src/components/key and all you need to do is copy/paste your API key in there. 
 
 ## Available Scripts
 
