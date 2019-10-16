@@ -101,6 +101,10 @@ input {
   width: 100%;
 }
 
+.welcome-message-container {
+  margin-top: 2em;
+}
+
 .loading-spinner {
   margin-top: 2em;
   width: 3em;
