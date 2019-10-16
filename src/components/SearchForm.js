@@ -23,7 +23,7 @@ class SearchForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     const searchQuery = this.name.value;
-    const path = `${searchQuery}`;
+    const path = `/Search/${searchQuery}`;
     this.props.history.push(path);
     this.props.onSearch(this.state.searchValue);
     this.props.resetLoading();
